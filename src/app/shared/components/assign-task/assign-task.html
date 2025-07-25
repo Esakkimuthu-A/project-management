@@ -1,0 +1,35 @@
+<h2 mat-dialog-title class="dialog-title">Assign Task</h2>
+
+<form [formGroup]="assignForm" class="dialog-form" mat-dialog-content>
+  <mat-form-field appearance="outline">
+    <mat-label>Available Resources</mat-label>
+    <mat-select formControlName="unassignedResource">
+      <mat-option *ngFor="let item of availableResource" [value]="item">
+        {{ item.name }}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="assignForm.get('unassignedResource')?.hasError('required')">
+      Resource is required
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Unassigned Task</mat-label>
+    <mat-select formControlName="allResource">
+      <mat-option *ngFor="let item of unassignedTask" [value]="item">
+        {{ item.task }}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="assignForm.get('allResource')?.hasError('required')">
+      Task is required
+    </mat-error>
+  </mat-form-field>
+
+  <div mat-dialog-actions align="end">
+    <button mat-button [mat-dialog-close]="null" class="cancel-btn">Cancel</button>
+    <button mat-flat-button color="primary" type="submit" [mat-dialog-close]="assignForm.value"
+      [disabled]="assignForm.invalid" (click)="onAssign()">
+      Assign
+    </button>
+  </div>
+</form>

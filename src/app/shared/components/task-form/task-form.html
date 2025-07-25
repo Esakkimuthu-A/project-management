@@ -1,0 +1,44 @@
+<h2 mat-dialog-title class="dialog-title">{{ mode | titlecase }} Task</h2>
+
+<form [formGroup]="taskForm" class="dialog-form" mat-dialog-content>
+  <mat-form-field appearance="outline">
+    <mat-label>Task</mat-label>
+    <input matInput formControlName="task" />
+    <mat-error *ngIf="taskForm.get('task')?.hasError('required')">
+      Task is required
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Start Date</mat-label>
+    <input matInput [matDatepicker]="startPicker" formControlName="startDate" />
+    <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+    <mat-datepicker #startPicker></mat-datepicker>
+    <mat-error *ngIf="taskForm.get('startDate')?.hasError('required')">
+      Start date is required
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>End Date</mat-label>
+    <input matInput [matDatepicker]="endPicker"  [matDatepickerFilter]="getEndDateFilter"  formControlName="endDate" />
+    <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+    <mat-datepicker #endPicker></mat-datepicker>
+    <mat-error *ngIf="taskForm.get('endDate')?.hasError('required')">
+      End date is required
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Status</mat-label>
+    <input *ngIf="taskForm.get('status')?.value === 'Unassigned'" matInput formControlName="status" />
+    <mat-select *ngIf="taskForm.get('status')?.value !== 'Unassigned'" formControlName="status">
+      <mat-option [value]="item?.value" *ngFor="let item of taskStatus">
+        {{ item?.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div mat-dialog-actions align="end">
+    <button mat-button [mat-dialog-close]="null" class="cancel-btn">Cancel</button>
+    <button *ngIf="mode !== 'view'" mat-flat-button color="primary" (click)="onSave()" [disabled]="taskForm.invalid">
+      Save
+    </button>
+  </div>
+</form>

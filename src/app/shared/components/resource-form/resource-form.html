@@ -1,0 +1,53 @@
+<h2 mat-dialog-title class="dialog-title">{{ mode | titlecase }} Resource</h2>
+<form [formGroup]="resourceForm" class="dialog-form" mat-dialog-content>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Name</mat-label>
+    <input matInput formControlName="name" />
+    <mat-error *ngIf="resourceForm.get('name')?.hasError('required')">
+      Name is required
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Email</mat-label>
+    <input matInput formControlName="email" />
+    <mat-error *ngIf="resourceForm.get('email')?.hasError('required')">
+      Email is required
+    </mat-error>
+    <mat-error *ngIf="resourceForm.get('email')?.hasError('email')">
+      Invalid email format
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Status</mat-label>
+    <mat-select formControlName="status">
+      <mat-option [value]="item?.value" *ngFor="let item of status">
+        {{item?.name}}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="resourceForm.get('status')?.hasError('required')">
+      Status is required
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Cost</mat-label>
+    <input matInput formControlName="cost" />
+    <mat-error *ngIf="resourceForm.get('cost')?.hasError('required')">
+      Cost is required
+    </mat-error>
+    <mat-error *ngIf="resourceForm.get('cost')?.hasError('pattern')">
+      Only numeric values are allowed
+    </mat-error>
+  </mat-form-field>
+
+  <div mat-dialog-actions align="end">
+    <button mat-button [mat-dialog-close]="null" class="cancel-btn">Cancel</button>
+    <button *ngIf="mode !== 'view'" mat-flat-button color="primary" [mat-dialog-close]="resourceForm.value"
+      [disabled]=" resourceForm.invalid">
+      Save
+    </button>
+  </div>
+</form>

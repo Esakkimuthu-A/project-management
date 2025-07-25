@@ -1,0 +1,12 @@
+@if(isLoading){
+  <app-skeleton-loader></app-skeleton-loader>
+}
+@else{
+  <div class="button-heading">
+    <button matButton="filled" (click)="addNewResource()"><mat-icon>add_circle_outline</mat-icon>Add New Resource</button>
+    <button matButton="filled" (click)="assignTask()"><mat-icon>add_circle_outline</mat-icon>Assign Task</button>
+  </div>
+  <app-dynamic-table [tableData]="displayDetails" [displayedColumns]="displayedColumnNames" [actions]='actions'(actionClick)="handleAction($event)">
+  </app-dynamic-table>
+}
+

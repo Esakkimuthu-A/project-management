@@ -1,0 +1,52 @@
+.dashboard-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: space-between;
+  padding: 16px;
+}
+
+.chart-card {
+  width: 100%;
+  max-width: 415px;
+  min-height: 300px;
+  padding: 16px;
+  background-color: var(--table-background-color);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+
+  .task-filter {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    label {
+      font-size: 15px;
+      margin-right: 12px;
+      color: #818181;
+    }
+
+    mat-select {
+      width: 180px;
+    }
+  }
+
+  canvas {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  @media (max-width: 800px) {
+    max-width: 100%;
+  }
+}
+
+.mat-select-styles {
+  border: 2px solid black;
+  padding: 2px 4px;
+}

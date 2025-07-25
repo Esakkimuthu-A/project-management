@@ -1,0 +1,56 @@
+<div class="layout-wrapper">
+  <aside class="sidebar" *ngIf="!isSmallScreen">
+    <div class="app-title">Project Management</div>
+    <div class="user-info">
+      <img src="images/user-image.webp" alt="User" class="avatar-image" />
+      <div class="user-text">
+        <p class="username">Admin</p>
+        <p class="logout">Logout</p>
+      </div>
+    </div>
+    <hr class="divider" />
+    <div class="side-nav">
+      <div *ngFor="let item of navItems" class="nav-item" [routerLink]="item.route" routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }">
+        <div class="nav-content">
+          <mat-icon class="nav-icon">{{ item.iconName }}</mat-icon>
+          <span class="nav-label">{{ item.name }}</span>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <div *ngIf="isSmallScreen">
+    <div class="menu-drop" *ngIf="sidebarOpen" (click)="closeSidebarOnSelection()"></div>
+
+    <div class="main-side-nav" [class.show]="sidebarOpen">
+      <nav class="sidebar-nav">
+        <a routerLink="/app/dashboard" (click)="closeSidebarOnSelection()">Dashboard</a>
+        <a routerLink="/app/resources" (click)="closeSidebarOnSelection()">Resources</a>
+        <a routerLink="/app/tasks" (click)="closeSidebarOnSelection()">Tasks</a>
+      </nav>
+    </div>
+  </div>
+
+  <div class="right-section">
+    <header class="header">
+      <div class="nav-heading">
+        <button class="menu-icon" (click)="toggleSidebar()" *ngIf="isSmallScreen">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <div>
+          <div class="main-heading">{{ heading }}</div>
+          <div class="sub-heading" *ngIf="subHeading">{{ subHeading }}</div>
+        </div>
+      </div>
+      <!-- <div class="actions">
+        <div class="action-item">+ Add Widgets ▼</div>
+        <div class="action-item">🔔 5 Notifications ▼</div>
+      </div> -->
+    </header>
+    <main class="main-content">
+      <router-outlet>
+      </router-outlet>
+    </main>
+  </div>
+</div>

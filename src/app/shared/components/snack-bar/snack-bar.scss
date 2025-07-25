@@ -1,0 +1,39 @@
+.snack-bar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.icon-container {
+  width: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  color: white;
+}
+
+.message-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  color: white;
+  padding: 0 10px;
+}
+
+.snack-bar-message {
+  font-size: 16px;
+  font-weight: 500;
+  font-family: var(--text-font-family);
+}
+
+.close-container {
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+.close-container mat-icon:hover {
+  cursor: pointer;
+}

@@ -1,0 +1,11 @@
+.button-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 5px;
+}
+
+.mat-mdc-unelevated-button {
+  background-color: var(--button-background-color) !important;
+  font-size: 14px;
+}

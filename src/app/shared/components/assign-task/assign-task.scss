@@ -1,0 +1,49 @@
+mat-form-field {
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.dialog-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 16px;
+}
+
+.dialog-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-top: 10px !important;
+  max-height: 75vh;
+  overflow-y: auto;
+
+  mat-form-field {
+    width: 100%;
+  }
+
+  mat-error {
+    font-size: 13px;
+    color: red;
+  }
+}
+
+::ng-deep .mat-dialog-container {
+  border-radius: 20px;
+  padding: 24px;
+}
+
+.mat-mdc-unelevated-button {
+  background-color: var(--button-background-color) !important;
+  font-size: 14px;
+}
+
+.cancel-btn {
+  border: 2px solid var(--button-background-color);
+  border-radius: 5px;
+}
+
+.mat-mdc-dialog-actions {
+  padding: 5px !important;
+  margin-bottom: 10px;
+}

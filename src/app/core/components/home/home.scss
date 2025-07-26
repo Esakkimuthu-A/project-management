@@ -263,3 +263,9 @@
     height: calc(100vh - 50px);
   }
 }
+
+@media (max-width:500px){
+  .main-content {
+    padding: 0px;
+  }
+}

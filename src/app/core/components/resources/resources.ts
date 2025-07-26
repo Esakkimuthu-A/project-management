@@ -41,11 +41,12 @@ export class Resources {
       const { data, error } = await this.sharedService.getResources();
       if (error) {
         console.error('Error fetching resources:', error);
+        return;
       }
       this.displayDetails = data || [];
-    } catch (e) {
-      this.snackBarService.openSnackBar({ message: 'Unexpected error',main: SnackType.Error});
-      console.error('Unexpected error:', e);
+    } catch (e:any) {
+      const errorMessage = e?.message ?? 'Unexpected error';
+      this.snackBarService.openSnackBar({ message: errorMessage, main: SnackType.Error });
     } finally {
       this.isLoading = false;
     }
@@ -95,7 +96,7 @@ export class Resources {
       data: { mode, resource: data }
     });
 
-    dialogRef.afterClosed().subscribe(async result => {
+    dialogRef.afterClosed().subscribe(async (result: Resource) => {
       if (result) {
         if (mode === 'edit') {
           if (data?.id) {
@@ -143,15 +144,14 @@ export class Resources {
       const { data, error } = await this.sharedService.addResources(result);
       if (error) {
         console.error('Error adding user data:', error);
-        // Optionally show error to user using snackbar/toast
         return;
       }
       if (data) {
         this.getResources();
       }
-    } catch (err) {
-      this.snackBarService.openSnackBar({ message: 'Unexpected error',main: SnackType.Error});
-      console.error('Unexpected error:', err);
+    } catch (err:any) {
+      const errorMessage = err?.message ?? 'Unexpected error';
+      this.snackBarService.openSnackBar({ message: errorMessage, main: SnackType.Error });
     } finally {
       this.isLoading = false;
     }
@@ -163,7 +163,7 @@ export class Resources {
    */
   deleteResource(element: Resource) {
     const dialogRef = this.dialogService.openConfirmationDialog(`Are you sure you want to delete "${element.name}"?`);
-    dialogRef.afterClosed().subscribe(async (result: any) => {
+    dialogRef.afterClosed().subscribe(async (result: boolean) => {
       if (result) {
         this.isLoading = true;
         const { error } = await this.sharedService.deleteResource(element.id);

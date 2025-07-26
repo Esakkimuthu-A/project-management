@@ -29,7 +29,7 @@ export class SnackBar {
   openSnackBar(input: SnackBarData): void {
     const property = this.details.find(x => x.type === input.main);
     this._snackBar.openFromComponent(SnackBarComponent, {
-      duration: input.duration ?? 200000,
+      duration: input.duration ?? 2000,
       data: {
         header: input.message,
         content: property?.event

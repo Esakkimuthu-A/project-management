@@ -25,7 +25,7 @@ export class Dashboard {
   statusOptions: string[] = ['All', 'Unassigned', 'Assigned', 'Inprogress', 'Completed'];
   selectedStatus: string = 'All';
 
-  constructor(private sharedService: Shared, private snackBarService:SnackBar) { }
+  constructor(private sharedService: Shared, private snackBarService: SnackBar) { }
 
   ngOnInit() {
     this.getTasks();
@@ -45,9 +45,9 @@ export class Dashboard {
         endDate: moment(task.endDate).format('DD-MM-YYYY')
       }));
       this.filterTasks();
-    } catch (e) {
-      this.snackBarService.openSnackBar({ message: 'Unexpected error',main: SnackType.Error});
-      console.error('Unexpected error:', e);
+    } catch (e: any) {
+      const errorMessage = e?.message ?? 'Unexpected error';
+      this.snackBarService.openSnackBar({ message: errorMessage, main: SnackType.Error });
     } finally {
       this.isLoading = false;
     }

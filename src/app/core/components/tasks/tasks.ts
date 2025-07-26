@@ -41,15 +41,16 @@ export class Tasks {
       const { data, error } = await this.sharedService.getTasks();
       if (error) {
         console.error('Error fetching resources:', error);
+        return;
       }
       this.displayTask = (data || []).map(task => ({
         ...task,
         startDate: moment(task.startDate).format('DD-MM-YYYY'),
         endDate: moment(task.endDate).format('DD-MM-YYYY')
       }));
-    } catch (e) {
-      this.snackBarService.openSnackBar({ message: 'Unexpected error',main: SnackType.Error});
-      console.error('Unexpected error:', e);
+    } catch (e: any) {
+      const errorMessage = e?.message ?? 'Unexpected error';
+      this.snackBarService.openSnackBar({ message: errorMessage, main: SnackType.Error });
     } finally {
       this.isLoading = false;
     }
@@ -75,15 +76,14 @@ export class Tasks {
       const { data, error } = await this.sharedService.addTasks(element);
       if (error) {
         console.error('Error adding user data:', error);
-        // Optionally show error to user using snackbar/toast
         return;
       }
       if (data) {
         this.getTasks();
       }
-    } catch (err) {
-      this.snackBarService.openSnackBar({ message: 'Unexpected error',main: SnackType.Error});
-      console.error('Unexpected error:', err);
+    } catch (e:any) {
+      const errorMessage = e?.message ?? 'Unexpected error';
+      this.snackBarService.openSnackBar({ message: errorMessage, main: SnackType.Error });
     } finally {
       this.isLoading = false;
     }
@@ -129,7 +129,7 @@ export class Tasks {
             }
             else {
               this.isLoading = false;
-              this.snackBarService.openSnackBar({ message: 'Update failed',main: SnackType.Error});
+              this.snackBarService.openSnackBar({ message: 'Update failed', main: SnackType.Error });
               console.error('Update failed:', error);
             }
           }

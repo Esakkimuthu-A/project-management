@@ -31,7 +31,8 @@ export const TaskDisplayedColumnNames = [
 ];
 
 export const ResourceStatus = [
-  { id: 0, name: 'Available', value: 'Available' }
+  { id: 0, name: 'Available', value: 'Available' },
+  { id: 1, name: 'Unavailable', value: 'Unavailable'}
 ]
 
 export const TaskStatus = [

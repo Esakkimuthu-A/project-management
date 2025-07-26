@@ -4,16 +4,22 @@
     <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column.key">
       <th mat-header-cell *matHeaderCellDef> {{ column.label }} </th>
       <td mat-cell *matCellDef="let element">
-        <span [ngStyle]="{
-        color: column.key === 'status' ? 'rgb(144 213 219)' : 'inherit'
-      }">
-          {{
-          column.key === 'cost'
-          ? (element[column.key] | currency: currency : 'symbol')
-          : element[column.key]
-          }}
+        <span *ngIf="column.key === 'status'; else normalCell" class="status-label" [ngClass]="{
+        'assigned': element[column.key] === 'Assigned',
+        'available': element[column.key] === 'Available',
+        'in-progress': element[column.key] === 'Inprogress',
+        'completed': element[column.key] === 'Completed',
+        'unavailable': element[column.key] === 'Unavailable',
+        'unassigned': element[column.key] === 'Unassigned'}">
+          {{ element[column.key] }}
         </span>
+        <ng-template #normalCell>
+          <span>
+            {{ column.key === 'cost' ? (element[column.key] | currency: currency : 'symbol') : element[column.key] }}
+          </span>
+        </ng-template>
       </td>
+
     </ng-container>
 
 

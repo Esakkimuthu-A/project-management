@@ -45,21 +45,21 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 .snackbar-success .mdc-snackbar__surface {
-  background-color: #4caf50 !important; /* Softer green */
+  background-color: #4caf50 !important;
 }
 
 .snackbar-error .mdc-snackbar__surface {
-  background-color: #f44336 !important; /* Clean red */
+  background-color: #ff5252 !important;
 }
 
 .snackbar-warning .mdc-snackbar__surface {
-  background-color: #ff9800 !important; /* Warm amber */
+  background-color: #fb8c00 !important;
 }
 
 .snackbar-info .mdc-snackbar__surface {
-  background-color: #2196f3 !important; /* Calming blue */
+  background-color: #2196f3 !important;
 }
 
 .snackbar-default .mdc-snackbar__surface {
-  background-color: #607d8b !important; /* Blue gray */
+  background-color: #607d8b !important;
 }

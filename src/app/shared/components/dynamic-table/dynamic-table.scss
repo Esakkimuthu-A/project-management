@@ -48,3 +48,37 @@ mat-paginator{
     margin: 0px;
   }
 }
+
+.status-label {
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+  color: white;
+  display: inline-block;
+  text-transform: capitalize;
+}
+
+.assigned {
+  background-color: #1e88e5;
+}
+
+.available {
+  background-color: #4caf50;
+}
+
+.in-progress {
+  background-color: #fbc02d;
+}
+
+.completed {
+  background-color: #4caf50;
+}
+
+.unavailable {
+  background-color: #9e9e9e;
+}
+
+.unassigned {
+  background-color: #e53935;
+}

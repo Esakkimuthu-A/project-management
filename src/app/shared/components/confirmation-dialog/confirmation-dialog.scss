@@ -26,3 +26,7 @@
   border: 2px solid var(--button-background-color);
   border-radius: 5px;
 }
+
+::ng-deep .mat-mdc-dialog-surface {
+  border-radius: 5px !important;
+}

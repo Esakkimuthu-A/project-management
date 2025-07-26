@@ -49,10 +49,10 @@ export class Chart {
 
   updateChartDataFromTasks() {
     const statusColorMap: { [key: string]: string } = {
-      Completed: '#299c3f',
-      Inprogress: '#3a7281',
-      Assigned: '#ec5e28',
-      Unassigned: '#FFC107'
+      Completed: '#4caf50',
+      Inprogress: '#fbc02d',
+      Assigned: '#1e88e5',
+      Unassigned: '#e53935'
     };
 
     const statusCounts: { [key: string]: number } = {};

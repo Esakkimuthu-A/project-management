@@ -26,9 +26,8 @@
   </mat-form-field>
 
   <div mat-dialog-actions align="end">
-    <button mat-button [mat-dialog-close]="null" class="cancel-btn">Cancel</button>
-    <button mat-flat-button color="primary" type="submit" [mat-dialog-close]="assignForm.value"
-      [disabled]="assignForm.invalid" (click)="onAssign()">
+    <button mat-button [mat-dialog-close]="false" class="cancel-btn">Cancel</button>
+    <button mat-flat-button color="primary" type="submit" [disabled]="assignForm.invalid" (click)="onAssign()">
       Assign
     </button>
   </div>

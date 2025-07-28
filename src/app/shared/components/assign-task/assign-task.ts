@@ -4,7 +4,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { CommonModule } from '@angular/common';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { Shared } from '../../services/shared';
 import { MatButtonModule } from '@angular/material/button';
 import { Resource, Task } from '../../../core/models/project.model';
@@ -21,7 +21,7 @@ export class AssignTask {
 
   unassignedTask: Task[] = []
 
-  constructor(private fb: FormBuilder, private sharedService: Shared) { }
+  constructor(private fb: FormBuilder, private sharedService: Shared, private dialogRef: MatDialogRef<any>) { }
 
   ngOnInit() {
     this.formInitial()
@@ -89,6 +89,8 @@ export class AssignTask {
 
     } catch (error) {
       console.error('Assignment failed:', error);
+    } finally{
+      this.dialogRef.close(true);
     }
   }
 

@@ -9,19 +9,19 @@
       </mat-option>
     </mat-select>
     <mat-error *ngIf="assignForm.get('unassignedResource')?.hasError('required')">
-      Resource is required
+      Please select a resource.
     </mat-error>
   </mat-form-field>
 
   <mat-form-field appearance="outline">
-    <mat-label>Unassigned Task</mat-label>
+    <mat-label>Unassigned Tasks</mat-label>
     <mat-select formControlName="allResource">
       <mat-option *ngFor="let item of unassignedTask" [value]="item">
         {{ item.task }}
       </mat-option>
     </mat-select>
     <mat-error *ngIf="assignForm.get('allResource')?.hasError('required')">
-      Task is required
+      Please select a task.
     </mat-error>
   </mat-form-field>
 

@@ -139,7 +139,7 @@ export class Tasks {
   }
 
   async deleteTask(element: Task) {
-    const dialogRef = this.dialogService.openConfirmationDialog("You have unsaved changes. Are you sure you want to leave this page?");
+    const dialogRef = this.dialogService.openConfirmationDialog(`Are you sure you want to delete "${element.task}"?`);
     dialogRef.afterClosed().subscribe(async result => {
       if (result) {
         const { error } = await this.sharedService.deleteTask(element.id);

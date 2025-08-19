@@ -7,10 +7,11 @@ import { CountryDetails, SideNavDetails } from '../../constands/project.constant
 import { MatMenuModule } from '@angular/material/menu'; 
 import { MatButtonModule } from '@angular/material/button';
 import { Shared } from '../../../shared/services/shared';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, MatSidenavModule, MatIconModule, RouterModule, MatMenuModule, MatButtonModule],
+  imports: [CommonModule, MatSidenavModule, MatIconModule, RouterModule, MatMenuModule, MatButtonModule, MatTooltipModule],
   templateUrl: './home.html',
   styleUrl: './home.scss'
 })

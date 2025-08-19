@@ -43,7 +43,7 @@
           <div class="sub-heading" *ngIf="subHeading">{{ subHeading }}</div>
         </div>
       </div>
-      <button mat-button [matMenuTriggerFor]="countryMenu">
+      <button matTooltip="Select your preferred currency" mat-button [matMenuTriggerFor]="countryMenu">
         {{ getCountryName(selectedCountry) }}
         <mat-icon>arrow_drop_down</mat-icon>
       </button>

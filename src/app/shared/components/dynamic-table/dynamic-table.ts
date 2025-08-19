@@ -1,9 +1,10 @@
-import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { Component, effect, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { CommonModule } from '@angular/common';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatIconModule } from '@angular/material/icon';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { Shared } from '../../services/shared';
 
 @Component({
   selector: 'app-dynamic-table',
@@ -20,7 +21,13 @@ export class DynamicTable {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   allColumns: string[] = [];
   dataSource = new MatTableDataSource<any>();
-  currency: string= 'USD';
+  currency !: string;
+
+  constructor(private sharedService:Shared){
+    effect(()=>{
+      this.currency = this.sharedService.currency();
+    })
+  }
 
   ngOnInit(): void {
     this.allColumns = this.displayedColumns.map(col => col.key);

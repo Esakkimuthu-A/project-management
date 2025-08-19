@@ -264,8 +264,19 @@
   }
 }
 
-@media (max-width:500px){
+@media (max-width:500px) {
   .main-content {
     padding: 0px;
   }
+}
+
+button[mat-button] {
+  color: black;
+  font-weight: 500;
+}
+
+mat-toolbar {
+  background: #1976d2;
+  color: white;
+  height: 64px;
 }

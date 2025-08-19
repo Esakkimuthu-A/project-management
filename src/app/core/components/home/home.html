@@ -1,6 +1,6 @@
 <div class="layout-wrapper">
   <aside class="sidebar" *ngIf="!isSmallScreen">
-    <div class="app-title">Projects Management</div>
+    <div class="app-title">Project Management</div>
     <div class="user-info">
       <img src="images/user-image.webp" alt="User" class="avatar-image" />
       <div class="user-text">
@@ -43,10 +43,15 @@
           <div class="sub-heading" *ngIf="subHeading">{{ subHeading }}</div>
         </div>
       </div>
-      <!-- <div class="actions">
-        <div class="action-item">+ Add Widgets ▼</div>
-        <div class="action-item">🔔 5 Notifications ▼</div>
-      </div> -->
+      <button mat-button [matMenuTriggerFor]="countryMenu">
+        {{ getCountryName(selectedCountry) }}
+        <mat-icon>arrow_drop_down</mat-icon>
+      </button>
+      <mat-menu #countryMenu="matMenu">
+        <button mat-menu-item *ngFor="let country of countries" (click)="selectCountry(country.value)">
+          {{ country.name }}
+        </button>
+      </mat-menu>
     </header>
     <main class="main-content">
       <router-outlet>

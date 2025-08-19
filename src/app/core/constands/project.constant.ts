@@ -32,7 +32,7 @@ export const TaskDisplayedColumnNames = [
 
 export const ResourceStatus = [
   { id: 0, name: 'Available', value: 'Available' },
-  { id: 1, name: 'Unavailable', value: 'Unavailable'}
+  { id: 1, name: 'Unavailable', value: 'Unavailable' }
 ]
 
 export const TaskStatus = [
@@ -45,3 +45,16 @@ export const DashboardTaskDisplayedColumnNames = [
   { key: 'startDate', label: 'Start Date' },
   { key: 'endDate', label: 'End Date' }
 ];
+
+export const CountryDetails: CountryDetail[] = [
+  { value: "USD", name: "United States" },
+  { value: "INR", name: "India" },
+  { value: "GBP", name: "United Kingdom" },
+  { value: "EUR", name: "European Union" },
+  { value: "JPY", name: "Japan" },
+];
+
+export interface CountryDetail {
+  value: string;
+  name: string;
+}

@@ -1,5 +1,5 @@
 import { isPlatformBrowser } from '@angular/common';
-import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { Inject, Injectable, PLATFORM_ID, signal, WritableSignal } from '@angular/core';
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
 import { environment } from '../../environments/environment.development';
 import { Resource, Task } from '../../core/models/project.model';
@@ -13,6 +13,7 @@ export class Shared {
   // project_name : Project Management
   // password : vivant360_projectmanagement
 
+  currency : WritableSignal<string>= signal('USD');
   private supabase!: SupabaseClient;
 
   // constructor() {
@@ -22,6 +23,8 @@ export class Shared {
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {
     if (isPlatformBrowser(this.platformId)) {
       this.supabase = createClient(environment.supabase.url, environment.supabase.key);
+      const currentData  = localStorage.getItem('currency') ?? 'USD';
+      this.currency.set(currentData)
     }
   }
 
